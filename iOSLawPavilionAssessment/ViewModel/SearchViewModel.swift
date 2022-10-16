@@ -13,6 +13,7 @@ class GetSearchResultViewModel {
     var delegate: GetSearchResultViewModelDelegate?
     private var userDetails:[UsersDetails] = []
     func getSearchResult(username: String, completion: @escaping () -> Void) {
+        userDetails.removeAll()
         let searchResultResource = GetSearchResultResource()
         searchResultResource.getSearchResult(username: username) { getSearchResult, statusCode in
             DispatchQueue.main.async { [weak self] in
@@ -26,9 +27,10 @@ class GetSearchResultViewModel {
                 Utility.savePageCount(number: totalCount)
                 for index in 0..<searchResult.count {
                     let avatarImage = searchResult[index].avatar_url
-                    let loginName = searchResult[index].login
+                    let loginName = searchResult[index].login.localizedUppercase
                     let typeName = searchResult[index].type
                     self?.userDetails.append(UsersDetails(avatar: avatarImage ?? "", login: loginName, userType: typeName))
+                    self?.userDetails =  self?.userDetails.sorted(by: {$0.login < $1.login}) ?? []
                 }
                 completion()
             }

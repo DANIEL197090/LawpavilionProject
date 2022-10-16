@@ -30,7 +30,7 @@ extension SearchViewController {
             loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             
-            loadingIndicatorView.topAnchor.constraint(equalTo: loadingView.topAnchor, constant: 200),
+            loadingIndicatorView.topAnchor.constraint(equalTo: loadingView.topAnchor, constant: 50),
             loadingIndicatorView.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor, constant: 0),
             loadingIndicatorView.heightAnchor.constraint(equalToConstant: 100),
             

@@ -8,35 +8,15 @@ import UIKit
 class UserCell: UITableViewCell  {
     static var identifier: String = "UserCellId"
     lazy var avatarImageView :  UIImageView  = {
-        let profileImageView =  UIImageView()
-        profileImageView.image = UIImage(named: "car")
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.isUserInteractionEnabled = true
-        profileImageView.layer.masksToBounds = true
-        profileImageView.layer.cornerRadius = 25
+        let profileImageView =  UIImageView.imageDesign()
         return profileImageView
     }()
-    
     lazy var typelabel: UILabel = {
-        let label = UILabel()
-        label.text = "Daniel"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.backgroundColor = AppColors.lightGreenColor.color
-        label.textColor = AppColors.greenColor.color
-        label.font = UIFont(name: "HelveticaNeue-Regular", size: 12)
-        label.layer.cornerRadius = 3
-        label.layer.masksToBounds = true
+        let label = UILabel.simpleDesign()
         return label
     }()
     lazy var loginNamelabel: UILabel = {
-        let label = UILabel()
-        label.text = "Daniel"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.textColor = textSystemColor
-        label.font = UIFont(name: "HelveticaNeue-Regular", size: 16)
+        let label = UILabel.simpleBoldDesign()
         return label
     }()
     // MARK: - ... Adding subviews and constraints in the cell

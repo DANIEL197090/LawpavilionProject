@@ -7,5 +7,5 @@
 
 import Foundation
 struct ApiEndpoints   {
-   static let userEndpoint = "https://api.github.com/search/users" // float live url
+   static let userEndpoint = "https://api.github.com/search/users" 
 }

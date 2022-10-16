@@ -12,7 +12,7 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
     lazy var searchTextField: paddedTextField = {
         let textField = paddedTextField()
         textField.attributedPlaceholder = NSAttributedString(
-            string: "Search a User",
+            string: "Search a user",
             attributes: [NSAttributedString.Key.foregroundColor: AppColors.placeholderColor.color]
         )
         textField.layer.borderColor = AppColors.greenColor.color.cgColor
@@ -30,23 +30,25 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.backgroundColor = AppColors.greenColor.color
         button.tintColor = AppColors.white.color
-        button.titleLabel?.font = UIFont(name: "Search", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
         return button
     }()
     @objc func didTapOnSearch() {
         guard let username = searchTextField.text else { return }
-        if searchTextField.text != "" {
+       if username != "" {
             userTableView.isHidden = true
             loadingView.isHidden = false
             loadingIndicatorView.isHidden = false
             getSearchResultViewModel.getSearchResult(username: username) {
-                DispatchQueue.main.async {
-                    self.userTableView.reloadData()
-                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.userTableView.isHidden = false
+                    self?.loadingView.isHidden = true
+                    self?.loadingIndicatorView.isHidden = true
+                    self?.userTableView.reloadData()
+             }
             }
-        }
+       }
     }
     lazy var userTableView : UITableView = {
         let table = UITableView()
@@ -67,7 +69,7 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
     }()
     lazy var loadingIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
-        view.color = systemColor
+        view.color = textSystemColor
         view.startAnimating()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
@@ -91,7 +93,9 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
                 self?.userTableView.reloadData()
             }
         }
+        self.navigationController?.isNavigationBarHidden = true
     }
     func didReceiveGetSearchResultResponse(getSearchResultResponse: GetSearchResultResponse?, statusCode: Int) {}
+
 }
 

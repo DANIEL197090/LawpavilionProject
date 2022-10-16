@@ -6,6 +6,40 @@
 //
 
 import UIKit
+extension UILabel {
+    class func simpleBoldDesign() -> UILabel {
+        let label = UILabel()
+        label.text = "Daniel"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.textColor = textSystemColor
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        return label
+    }
+    class func simpleDesign() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.backgroundColor = AppColors.lightGreenColor.color
+        label.textColor = AppColors.greenColor.color
+        label.font = UIFont(name: "HelveticaNeue-Regular", size: 12)
+        label.layer.cornerRadius = 3
+        label.layer.masksToBounds = true
+        return label
+    }
+}
+extension  UIImageView {
+    class func imageDesign() -> UIImageView {
+        let profileImageView =  UIImageView()
+        profileImageView.image = UIImage(named: "car")
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.layer.masksToBounds = true
+        profileImageView.layer.cornerRadius = 25
+        return profileImageView
+    }
+}
 extension UIView {
     func anchorToTop(_ top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil) {
         
