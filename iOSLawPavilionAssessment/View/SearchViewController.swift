@@ -36,7 +36,17 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         return button
     }()
     @objc func didTapOnSearch() {
-        
+        guard let username = searchTextField.text else { return }
+        if searchTextField.text != "" {
+            userTableView.isHidden = true
+            loadingView.isHidden = false
+            loadingIndicatorView.isHidden = false
+            getSearchResultViewModel.getSearchResult(username: username) {
+                DispatchQueue.main.async {
+                    self.userTableView.reloadData()
+                }
+            }
+        }
     }
     lazy var userTableView : UITableView = {
         let table = UITableView()

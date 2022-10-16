@@ -25,7 +25,7 @@ extension SearchViewController {
             filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             filterButton.heightAnchor.constraint(equalToConstant: 55),
             
-            loadingView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            loadingView.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 30),
             loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
