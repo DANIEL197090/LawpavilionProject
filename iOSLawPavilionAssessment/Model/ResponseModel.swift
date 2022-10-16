@@ -14,5 +14,5 @@ struct GetSearchResultResponse: Codable {
 struct AllItems: Codable {
     let login : String
     let avatar_url: String?
-    let type: String
+    let type: String?
 }

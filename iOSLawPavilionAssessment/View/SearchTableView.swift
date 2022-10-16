@@ -16,18 +16,36 @@ extension SearchViewController :UITableViewDelegate, UITableViewDataSource {
         guard let cell = userTableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as? UserCell else { return UITableViewCell() }
         cell.backgroundColor = systemColor
         cell.selectionStyle = .none
-        cell.typelabel.text = getSearchResultViewModel.typeCellForRowsAt(indexPath: indexPath)
-        cell.loginNamelabel.text = getSearchResultViewModel.loginCellForRowsAt(indexPath: indexPath).localizedCapitalized
-        cell.avatarImageView.kf.setImage(with: URL(string: "\(getSearchResultViewModel.avatarCellForRowsAt(indexPath: indexPath))"))
+        cell.loginNamelabel.text = getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].login.localizedCapitalized
+        cell.avatarImageView.kf.setImage(with: URL(string: "\(getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].avatar)"))
+        cell.typelabel.text = getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].userType
         cell.layer.cornerRadius = 5
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = userInfoViewController()
-        viewController.avatar = getSearchResultViewModel.avatarCellForRowsAt(indexPath: indexPath)
-        viewController.login =  getSearchResultViewModel.loginCellForRowsAt(indexPath: indexPath)
-        viewController.type = getSearchResultViewModel.typeCellForRowsAt(indexPath: indexPath)
+        viewController.avatar = getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].avatar
+        viewController.login =  getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].login
+        viewController.type = getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].userType
         navigationController?.pushViewController(viewController, animated: true)
         
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row ==  getSearchResultViewModel.numberOfRowsInSection(section: indexPath.section) - 1 {
+            footerLoader()
+            DispatchQueue.main.async { [self] in
+                if Utility.getPagesCount() <= page {
+                    spinner.stopAnimating()
+                } else {
+                    spinner.startAnimating()
+                    if searchTextField.text != "" {
+                        beginBatchFetch()
+                    } else {
+                      beginDefaultBatchFetch()
+                    }
+                   
+            }
+        }
+    }
+ }
 }

@@ -9,6 +9,7 @@ import UIKit
 extension SearchViewController {
     func layoutView() {
         view.addSubview(searchTextField)
+        view.addSubview(searchResultlabel)
         view.addSubview(filterButton)
         view.addSubview(userTableView)
         view.addSubview(loadingView)
@@ -20,6 +21,9 @@ extension SearchViewController {
             searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -85),
             searchTextField.heightAnchor.constraint(equalToConstant: 55),
             
+            searchResultlabel.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
+            searchResultlabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        
             filterButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             filterButton.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: 10),
             filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -36,6 +40,6 @@ extension SearchViewController {
             
         ])
     userTableView.anchorWithConstantsToTop(filterButton.bottomAnchor,
-                                                         left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
+                                                         left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 50, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
     }
 }

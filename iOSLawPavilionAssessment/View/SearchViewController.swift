@@ -7,7 +7,11 @@
 
 import UIKit
 class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
-    var username = "Daniel"
+    var defaultUser = "Daniel"
+    let spinner = UIActivityIndicatorView(style: .medium)
+    var fetchMore = false
+    var perPage = 10
+    var page = 1
     var getSearchResultViewModel = GetSearchResultViewModel()
     lazy var searchTextField: paddedTextField = {
         let textField = paddedTextField()
@@ -34,17 +38,26 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         button.layer.cornerRadius = 5
         return button
     }()
+    lazy var searchResultlabel: UILabel = {
+        let label = UILabel.simpleBoldDesign()
+        label.textColor = AppColors.greenColor.color
+        label.font = UIFont(name: "HelveticaNeue-Regular", size: 11)
+        return label
+    }()
     @objc func didTapOnSearch() {
         guard let username = searchTextField.text else { return }
        if username != "" {
             userTableView.isHidden = true
             loadingView.isHidden = false
             loadingIndicatorView.isHidden = false
-            getSearchResultViewModel.getSearchResult(username: username) {
+            searchResultlabel.isHidden = true
+           searchResultlabel.text = "Search result for : \(username)"
+           getSearchResultViewModel.getSearchResult(username: username, page: page, perPage: perPage) {
                 DispatchQueue.main.async { [weak self] in
                     self?.userTableView.isHidden = false
                     self?.loadingView.isHidden = true
                     self?.loadingIndicatorView.isHidden = true
+                    self?.searchResultlabel.isHidden = false
                     self?.userTableView.reloadData()
              }
             }
@@ -81,19 +94,60 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         userTableView.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
         
     }
+    // MARK: - VIEW DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         view.backgroundColor = systemColor
+        hideKeyboardWhenTappedAround()
+        searchResultlabel.text = "Search result for : \(defaultUser)"
         registerAllCells()
         layoutView()
         getSearchResultViewModel.delegate = self
-        getSearchResultViewModel.getSearchResult(username: username) { [weak self] in
+        getSearchResultViewModel.getSearchResult(username: defaultUser, page: page, perPage: perPage) { [weak self] in
             DispatchQueue.main.async {
                 self?.userTableView.reloadData()
             }
         }
         self.navigationController?.isNavigationBarHidden = true
+    }
+    func footerLoader() {
+        spinner.color = textSystemColor
+        spinner.hidesWhenStopped = true
+        userTableView.tableFooterView = spinner
+    }
+    // MARK: - BEGIN TO FETCH DETAILS
+    func beginBatchFetch() {
+        guard let username = searchTextField.text else {return}
+        if fetchMore {
+            page += 1
+            perPage += 10
+            print(perPage)
+            getSearchResultViewModel.getSearchResult(username: username, page: page, perPage: perPage) {
+                DispatchQueue.main.async { [self] in
+                    fetchMore = true
+                    self.userTableView.reloadData()
+                }
+            }
+        } else {
+            fetchMore = true
+            spinner.stopAnimating()
+        }
+    }
+    func beginDefaultBatchFetch() {
+        if fetchMore {
+            page += 1
+            perPage += 10
+            print(perPage)
+            getSearchResultViewModel.getSearchResult(username: defaultUser, page: page, perPage: perPage) {
+                DispatchQueue.main.async { [self] in
+                    fetchMore = true
+                    self.userTableView.reloadData()
+                }
+            }
+        } else {
+            fetchMore = true
+            spinner.stopAnimating()
+        }
     }
     func didReceiveGetSearchResultResponse(getSearchResultResponse: GetSearchResultResponse?, statusCode: Int) {}
 

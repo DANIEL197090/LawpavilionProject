@@ -7,10 +7,9 @@
 
 import Foundation
 struct GetSearchResultResource {
-    func getSearchResult(username: String, completionHandler: @escaping (_ result: GetSearchResultResponse?,_ statusCode:Int) -> Void) {
+    func getSearchResult(username: String,page: Int,perPage: Int, completionHandler: @escaping (_ result: GetSearchResultResponse?,_ statusCode:Int) -> Void) {
         let httpUtility = HTTPUtility()
-        let getSearchResultUrl = ApiEndpoints.userEndpoint + "?q=\(username)"
-        
+        let getSearchResultUrl = ApiEndpoints.userEndpoint + "?q=\(username)&page=\(page)&per_page=\(perPage)"
         let url = URL(string: getSearchResultUrl)!
         do {
             httpUtility.getAPIDataWithStatusCode(requestURL: url, resultType: GetSearchResultResponse.self) { result, statusCode in

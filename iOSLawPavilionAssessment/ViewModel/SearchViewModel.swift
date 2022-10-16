@@ -12,10 +12,10 @@ protocol GetSearchResultViewModelDelegate {
 class GetSearchResultViewModel {
     var delegate: GetSearchResultViewModelDelegate?
     private var userDetails:[UsersDetails] = []
-    func getSearchResult(username: String, completion: @escaping () -> Void) {
+    func getSearchResult(username: String,page: Int,perPage: Int, completion: @escaping () -> Void) {
         userDetails.removeAll()
         let searchResultResource = GetSearchResultResource()
-        searchResultResource.getSearchResult(username: username) { getSearchResult, statusCode in
+        searchResultResource.getSearchResult(username: username, page: page, perPage: perPage) { getSearchResult, statusCode in
             DispatchQueue.main.async { [weak self] in
                 self?.delegate?.didReceiveGetSearchResultResponse(getSearchResultResponse: getSearchResult, statusCode: statusCode)
                 guard let searchResult = getSearchResult?.items else {
@@ -25,12 +25,13 @@ class GetSearchResultViewModel {
                     return
                 }
                 Utility.savePageCount(number: totalCount)
+                print(Utility.getPagesCount())
                 for index in 0..<searchResult.count {
                     let avatarImage = searchResult[index].avatar_url
-                    let loginName = searchResult[index].login.localizedUppercase
+                    let loginName = searchResult[index].login
                     let typeName = searchResult[index].type
-                    self?.userDetails.append(UsersDetails(avatar: avatarImage ?? "", login: loginName, userType: typeName))
-                    self?.userDetails =  self?.userDetails.sorted(by: {$0.login < $1.login}) ?? []
+                    self?.userDetails.append(UsersDetails(avatar: avatarImage ?? "", login: loginName, userType: typeName ?? ""))
+                    self?.userDetails =  self?.userDetails.sorted(by: {$0.login.localizedCapitalized < $1.login.localizedCapitalized}) ?? []
                 }
                 completion()
             }
@@ -39,14 +40,8 @@ class GetSearchResultViewModel {
     func numberOfRowsInSection(section: Int) -> Int {
         return  userDetails.count
     }
-    func avatarCellForRowsAt(indexPath: IndexPath) -> String {
-        return userDetails[indexPath.row].avatar
-    }
-    func loginCellForRowsAt(indexPath: IndexPath) -> String {
-        return userDetails[indexPath.row].login
-    }
-    func typeCellForRowsAt(indexPath: IndexPath) -> String {
-        return userDetails[indexPath.row].userType
+    func cellForRowsAt(indexPath: IndexPath) -> [UsersDetails] {
+        return userDetails
     }
 }
 
