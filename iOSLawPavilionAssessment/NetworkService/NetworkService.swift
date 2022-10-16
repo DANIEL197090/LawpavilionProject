@@ -21,7 +21,7 @@ struct HTTPUtility {
                         let result = try decoder.decode(T.self, from: responseData!)
                         completion(result, httpResponse.statusCode)
                     }
-                    if httpResponse.statusCode ==  422 {
+                    if httpResponse.statusCode ==  403 {
                         let result = try decoder.decode(T.self, from: responseData!)
                         completion(result, httpResponse.statusCode)
                     }

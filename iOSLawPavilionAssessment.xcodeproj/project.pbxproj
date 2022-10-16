@@ -102,21 +102,24 @@
 		7727336128FAC2170091937E /* iOSLawPavilionAssessment */ = {
 			isa = PBXGroup;
 			children = (
-				776C3A0B28FBA04300723190 /* Extension */,
-				776E48E428FADA6C0054AE46 /* EndPoint */,
+				77501E9C28FC98E700B74B17 /* NetworkService */,
 				776E48DF28FAD8C50054AE46 /* Resources */,
 				776E48DE28FAD89D0054AE46 /* View */,
 				776E48DD28FAD8850054AE46 /* Delegate */,
 				776E48DC28FAD87A0054AE46 /* ViewModel */,
 				776E48DB28FAD86D0054AE46 /* Model */,
-				7727336B28FAC21B0091937E /* Assets.xcassets */,
 				7727336D28FAC21B0091937E /* LaunchScreen.storyboard */,
 				7727337028FAC21B0091937E /* Info.plist */,
-				776E48E028FAD8E20054AE46 /* DataResource.swift */,
-				776E48E228FAD91C0054AE46 /* NetworkService.swift */,
-				776E48E728FADC340054AE46 /* ColorEnum.swift */,
 			);
 			path = iOSLawPavilionAssessment;
+			sourceTree = "<group>";
+		};
+		77501E9C28FC98E700B74B17 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				776E48E228FAD91C0054AE46 /* NetworkService.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		776C3A0B28FBA04300723190 /* Extension */ = {
@@ -168,6 +171,11 @@
 		776E48DF28FAD8C50054AE46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				776E48E728FADC340054AE46 /* ColorEnum.swift */,
+				7727336B28FAC21B0091937E /* Assets.xcassets */,
+				776E48E028FAD8E20054AE46 /* DataResource.swift */,
+				776E48E428FADA6C0054AE46 /* EndPoint */,
+				776C3A0B28FBA04300723190 /* Extension */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

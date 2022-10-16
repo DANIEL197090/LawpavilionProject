@@ -30,7 +30,7 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
     }()
     lazy var filterButton: UIButton = {
         let button = UIButton()
-       button.addTarget(self, action: #selector(didTapOnSearch), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapOnSearch), for: .touchUpInside)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.backgroundColor = AppColors.greenColor.color
         button.tintColor = AppColors.white.color
@@ -46,22 +46,22 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
     }()
     @objc func didTapOnSearch() {
         guard let username = searchTextField.text else { return }
-       if username != "" {
+        if username != "" {
             userTableView.isHidden = true
             loadingView.isHidden = false
             loadingIndicatorView.isHidden = false
             searchResultlabel.isHidden = true
-           searchResultlabel.text = "Search result for : \(username)"
-           getSearchResultViewModel.getSearchResult(username: username, page: page, perPage: perPage) {
+            searchResultlabel.text = "Search result for : \(username)"
+            getSearchResultViewModel.getSearchResult(username: username, page: page, perPage: perPage) {
                 DispatchQueue.main.async { [weak self] in
                     self?.userTableView.isHidden = false
                     self?.loadingView.isHidden = true
                     self?.loadingIndicatorView.isHidden = true
                     self?.searchResultlabel.isHidden = false
                     self?.userTableView.reloadData()
-             }
+                }
             }
-       }
+        }
     }
     lazy var userTableView : UITableView = {
         let table = UITableView()
@@ -116,40 +116,33 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         userTableView.tableFooterView = spinner
     }
     // MARK: - BEGIN TO FETCH DETAILS
+    func batchFetch(name: String) {
+        if fetchMore {
+            perPage += 10
+            print(perPage)
+            getSearchResultViewModel.getSearchResult(username: name, page: page, perPage: perPage) {
+                DispatchQueue.main.async { [self] in
+                    fetchMore = true
+                    self.userTableView.reloadData()
+                }
+            }
+        } else {
+            fetchMore = true
+            spinner.stopAnimating()
+        }
+    }
     func beginBatchFetch() {
         guard let username = searchTextField.text else {return}
-        if fetchMore {
-            page += 1
-            perPage += 10
-            print(perPage)
-            getSearchResultViewModel.getSearchResult(username: username, page: page, perPage: perPage) {
-                DispatchQueue.main.async { [self] in
-                    fetchMore = true
-                    self.userTableView.reloadData()
-                }
-            }
-        } else {
-            fetchMore = true
-            spinner.stopAnimating()
-        }
+        batchFetch(name: username)
     }
     func beginDefaultBatchFetch() {
-        if fetchMore {
-            page += 1
-            perPage += 10
-            print(perPage)
-            getSearchResultViewModel.getSearchResult(username: defaultUser, page: page, perPage: perPage) {
-                DispatchQueue.main.async { [self] in
-                    fetchMore = true
-                    self.userTableView.reloadData()
-                }
-            }
-        } else {
-            fetchMore = true
+        batchFetch(name: defaultUser)
+    }
+    func didReceiveGetSearchResultResponse(getSearchResultResponse: GetSearchResultResponse?, statusCode: Int) {
+        if statusCode == 403 {
             spinner.stopAnimating()
         }
     }
-    func didReceiveGetSearchResultResponse(getSearchResultResponse: GetSearchResultResponse?, statusCode: Int) {}
-
+    
 }
 
