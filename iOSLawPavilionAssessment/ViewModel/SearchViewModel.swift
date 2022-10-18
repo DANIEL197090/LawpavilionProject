@@ -32,6 +32,8 @@ class GetSearchResultViewModel {
                         let loginName = searchResult[index].login
                         let typeName = searchResult[index].type
                         self?.userDetails.append(UsersDetails(avatar: avatarImage ?? "", login: loginName, userType: typeName ?? ""))
+                        
+                        // sorting the result uusing login
                         self?.userDetails =  self?.userDetails.sorted(by: {$0.login.localizedCapitalized < $1.login.localizedCapitalized}) ?? []
                     }
                     completion()

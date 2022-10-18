@@ -22,6 +22,7 @@ extension SearchViewController {
         cell.layer.cornerRadius = 5
         return cell
     }
+    // MARK: - DID TAP ON CELL
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = userInfoViewController()
         viewController.avatar = getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].avatar

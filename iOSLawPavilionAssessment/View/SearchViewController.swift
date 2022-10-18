@@ -44,6 +44,7 @@ public class SearchViewController: UIViewController, UITableViewDelegate, UITabl
         label.font = UIFont(name: "HelveticaNeue-Regular", size: 11)
         return label
     }()
+    // MARK: - WHEN SEARCH BUTTON IS TAPPED
     @objc func didTapOnSearch() {
         guard let username = searchTextField.text else { return }
         if username != "" {
@@ -110,6 +111,7 @@ public class SearchViewController: UIViewController, UITableViewDelegate, UITabl
         }
         self.navigationController?.isNavigationBarHidden = true
     }
+    // MARK: - FOOTER LOADER FOR TABLE VIEW
     func footerLoader() {
         spinner.color = textSystemColor
         spinner.hidesWhenStopped = true
@@ -131,13 +133,17 @@ public class SearchViewController: UIViewController, UITableViewDelegate, UITabl
             spinner.stopAnimating()
         }
     }
+    
+    // MARK: - BEGIN TO FETCH INPUT DETAILS
     func beginBatchFetch() {
         guard let username = searchTextField.text else {return}
         batchFetch(name: username)
     }
+    // MARK: - BEGIN TO DEFAULT DETAILS
     func beginDefaultBatchFetch() {
         batchFetch(name: defaultUser)
     }
+    
     func didReceiveGetSearchResultResponse(getSearchResultResponse: GetSearchResultResponse?, statusCode: Int) {
         if statusCode == 403 {
             spinner.stopAnimating()
