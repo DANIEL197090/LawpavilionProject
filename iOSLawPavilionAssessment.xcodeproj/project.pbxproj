@@ -24,8 +24,19 @@
 		776E48E828FADC340054AE46 /* ColorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776E48E728FADC340054AE46 /* ColorEnum.swift */; };
 		776E48EA28FAE2F80054AE46 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776E48E928FAE2F70054AE46 /* SearchTableView.swift */; };
 		776E48EC28FAE3EC0054AE46 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776E48EB28FAE3EC0054AE46 /* TableViewCell.swift */; };
+		77B5981F28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5981E28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.swift */; };
 		A6B5FC2720A8019C1D73F1C4 /* Pods_iOSLawPavilionAssessment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1806C7A2366DF2697103CD3 /* Pods_iOSLawPavilionAssessment.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		77B5982028FE700A00DD6E2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7727335728FAC2170091937E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7727335E28FAC2170091937E;
+			remoteInfo = iOSLawPavilionAssessment;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		085EEB905C509F77A2E4F80B /* Pods-iOSLawPavilionAssessment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSLawPavilionAssessment.release.xcconfig"; path = "Target Support Files/Pods-iOSLawPavilionAssessment/Pods-iOSLawPavilionAssessment.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +60,8 @@
 		776E48E728FADC340054AE46 /* ColorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEnum.swift; sourceTree = "<group>"; };
 		776E48E928FAE2F70054AE46 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		776E48EB28FAE3EC0054AE46 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		77B5981C28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSLawPavilionAssessmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77B5981E28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLawPavilionAssessmentTests.swift; sourceTree = "<group>"; };
 		E1806C7A2366DF2697103CD3 /* Pods_iOSLawPavilionAssessment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSLawPavilionAssessment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,6 +71,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B5FC2720A8019C1D73F1C4 /* Pods_iOSLawPavilionAssessment.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77B5981928FE700A00DD6E2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				7727336128FAC2170091937E /* iOSLawPavilionAssessment */,
+				77B5981D28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests */,
 				7727336028FAC2170091937E /* Products */,
 				66BD78D86F607ADF5C9FEBE3 /* Pods */,
 				40CD3BDC90B9DF837C3D426D /* Frameworks */,
@@ -95,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				7727335F28FAC2170091937E /* iOSLawPavilionAssessment.app */,
+				77B5981C28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +210,14 @@
 			path = EndPoint;
 			sourceTree = "<group>";
 		};
+		77B5981D28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests */ = {
+			isa = PBXGroup;
+			children = (
+				77B5981E28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.swift */,
+			);
+			path = iOSLawPavilionAssessmentTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,6 +240,24 @@
 			productReference = 7727335F28FAC2170091937E /* iOSLawPavilionAssessment.app */;
 			productType = "com.apple.product-type.application";
 		};
+		77B5981B28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77B5982428FE700A00DD6E2F /* Build configuration list for PBXNativeTarget "iOSLawPavilionAssessmentTests" */;
+			buildPhases = (
+				77B5981828FE700A00DD6E2F /* Sources */,
+				77B5981928FE700A00DD6E2F /* Frameworks */,
+				77B5981A28FE700A00DD6E2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77B5982128FE700A00DD6E2F /* PBXTargetDependency */,
+			);
+			name = iOSLawPavilionAssessmentTests;
+			productName = iOSLawPavilionAssessmentTests;
+			productReference = 77B5981C28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -222,6 +270,10 @@
 				TargetAttributes = {
 					7727335E28FAC2170091937E = {
 						CreatedOnToolsVersion = 13.4;
+					};
+					77B5981B28FE700A00DD6E2F = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 7727335E28FAC2170091937E;
 					};
 				};
 			};
@@ -239,6 +291,7 @@
 			projectRoot = "";
 			targets = (
 				7727335E28FAC2170091937E /* iOSLawPavilionAssessment */,
+				77B5981B28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +303,13 @@
 			files = (
 				7727336F28FAC21B0091937E /* LaunchScreen.storyboard in Resources */,
 				7727336C28FAC21B0091937E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77B5981A28FE700A00DD6E2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +380,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77B5981828FE700A00DD6E2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77B5981F28FE700A00DD6E2F /* iOSLawPavilionAssessmentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		77B5982128FE700A00DD6E2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7727335E28FAC2170091937E /* iOSLawPavilionAssessment */;
+			targetProxy = 77B5982028FE700A00DD6E2F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7727336D28FAC21B0091937E /* LaunchScreen.storyboard */ = {
@@ -504,6 +580,42 @@
 			};
 			name = Release;
 		};
+		77B5982228FE700A00DD6E2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5JA679JYGT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.iOSLawPavilionAssessmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSLawPavilionAssessment.app/iOSLawPavilionAssessment";
+			};
+			name = Debug;
+		};
+		77B5982328FE700A00DD6E2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5JA679JYGT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.daniel.iOSLawPavilionAssessmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSLawPavilionAssessment.app/iOSLawPavilionAssessment";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -521,6 +633,15 @@
 			buildConfigurations = (
 				7727337428FAC21B0091937E /* Debug */,
 				7727337528FAC21B0091937E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77B5982428FE700A00DD6E2F /* Build configuration list for PBXNativeTarget "iOSLawPavilionAssessmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B5982228FE700A00DD6E2F /* Debug */,
+				77B5982328FE700A00DD6E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

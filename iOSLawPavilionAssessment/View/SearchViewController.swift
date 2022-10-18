@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
+public class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GetSearchResultViewModelDelegate {
     var defaultUser = "Daniel"
     let spinner = UIActivityIndicatorView(style: .medium)
     var fetchMore = false
@@ -28,7 +28,7 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-    lazy var filterButton: UIButton = {
+    lazy var searchButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(didTapOnSearch), for: .touchUpInside)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
@@ -95,7 +95,7 @@ class SearchViewController: UIViewController, GetSearchResultViewModelDelegate {
         
     }
     // MARK: - VIEW DID LOAD
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = systemColor
         hideKeyboardWhenTappedAround()

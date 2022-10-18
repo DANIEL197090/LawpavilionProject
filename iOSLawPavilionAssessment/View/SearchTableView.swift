@@ -7,12 +7,12 @@
 
 import UIKit
 import Kingfisher
-extension SearchViewController :UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension SearchViewController {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return getSearchResultViewModel.numberOfRowsInSection(section: section)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = userTableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as? UserCell else { return UITableViewCell() }
         cell.backgroundColor = systemColor
         cell.selectionStyle = .none
@@ -22,7 +22,7 @@ extension SearchViewController :UITableViewDelegate, UITableViewDataSource {
         cell.layer.cornerRadius = 5
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = userInfoViewController()
         viewController.avatar = getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].avatar
         viewController.login =  getSearchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].login
@@ -30,7 +30,7 @@ extension SearchViewController :UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(viewController, animated: true)
         
     }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row ==  getSearchResultViewModel.numberOfRowsInSection(section: indexPath.section) - 1 {
             footerLoader()
             DispatchQueue.main.async { [self] in

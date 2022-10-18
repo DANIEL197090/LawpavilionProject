@@ -10,7 +10,7 @@ extension SearchViewController {
     func layoutView() {
         view.addSubview(searchTextField)
         view.addSubview(searchResultlabel)
-        view.addSubview(filterButton)
+        view.addSubview(searchButton)
         view.addSubview(userTableView)
         view.addSubview(loadingView)
         loadingView.addSubview(loadingIndicatorView)
@@ -24,12 +24,12 @@ extension SearchViewController {
             searchResultlabel.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
             searchResultlabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         
-            filterButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            filterButton.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: 10),
-            filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            filterButton.heightAnchor.constraint(equalToConstant: 55),
+            searchButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            searchButton.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: 10),
+            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            searchButton.heightAnchor.constraint(equalToConstant: 55),
             
-            loadingView.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 30),
+            loadingView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 30),
             loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
@@ -39,7 +39,7 @@ extension SearchViewController {
             loadingIndicatorView.heightAnchor.constraint(equalToConstant: 100),
             
         ])
-    userTableView.anchorWithConstantsToTop(filterButton.bottomAnchor,
+    userTableView.anchorWithConstantsToTop(searchButton.bottomAnchor,
                                                          left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 50, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
     }
 }
