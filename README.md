@@ -20,8 +20,9 @@ Step 3 - Created my project on xcode
 Step 4 - Installed kingFisher
 Step 5 - Created my Folder Structure
 Step 6 - Designed the UI
+Step 7 - Write code to enable light and dark mode
 Step 7 - Model the response of the API
 Step 8 - Write a generic Url session
-Step 9 - Coded the date resource and view model 
+Step 9 - Coded the data resource and view model 
 Step 10 - Implement the end point to appear on the UI
 Step 10 - Implement unit testing
