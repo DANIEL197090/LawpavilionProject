@@ -6,7 +6,7 @@ Architectural Decisions -
 - I used Model-View-View-Model(MVVM) for the architectural structure
 
 Reasons 
-- The MVVM helps to me in this project to neatly separate the business and presentation logic of an app from its UI
+- The MVVM helps me in this project to neatly separate the business and presentation logic of an app from its UI
 - The Model-View-viewModel architecture comprises of the 
 Model - Which is the app data used to feed the view or UI
 View - Which is what you can see (i.e the design or UI)
